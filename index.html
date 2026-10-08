@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Industrial Reliability & Weibull Analytics V2 | Luxury Aurora Liquid Glass</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="aurora-theme">
+  <!-- Multi-layered Aurora Mesh Background Elements -->
+  <div class="aurora-mesh mesh-1"></div>
+  <div class="aurora-mesh mesh-2"></div>
+  <div class="aurora-mesh mesh-3"></div>
+
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-left">
+      <div class="glass-pill">
+        <span class="aurora-sparkle">✦</span>
+        <span class="pill-text" data-i18n="badgeEngine">LUXURY AURORA GLASS · WEIBULL LIFE DATA & RCM</span>
+      </div>
+      <h1 class="brand-title">
+        <span class="aurora-gradient-text" data-i18n="appTitle">Weibull Analytics</span>
+        <span class="title-sub" data-i18n="appSub">Aurora Studio V2</span>
+      </h1>
+      <p class="brand-desc" data-i18n="appDesc">Life Data Distribution Modeling, Bathtub Hazard Physics & Optimal Age Replacement Policy (Tp*)</p>
+    </div>
+    
+    <div class="header-right">
+      <div class="glass-regime-pill" id="regimePill">
+        <span class="pill-dot"></span>
+        <span class="pill-label" id="regimeText">Wear-Out Regime (β > 1.0)</span>
+      </div>
+      <button id="langToggle" class="btn-glass-sec">
+        <span id="langLabel">العربية</span>
+      </button>
+      <button id="exportReportBtn" class="btn-glass-prim">
+        <span data-i18n="exportBtn">Export Reliability Audit</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Presets Bar -->
+  <section class="glass-panel presets-section">
+    <div class="presets-container">
+      <div class="presets-label-block">
+        <span class="aurora-icon">✧</span>
+        <span class="preset-label" data-i18n="presetsLabel">Equipment Lifetime Presets:</span>
+      </div>
+      <div class="preset-buttons">
+        <button class="preset-btn active" data-preset="bearings">
+          <span data-i18n="presetBearings">Roller Bearings (β=2.5, Wear-out)</span>
+        </button>
+        <button class="preset-btn" data-preset="semiconductor">
+          <span data-i18n="presetSemi">Microchips (β=0.75, Infant Mortality)</span>
+        </button>
+        <button class="preset-btn" data-preset="power-supply">
+          <span data-i18n="presetPower">Power Units (β=1.0, Constant Random)</span>
+        </button>
+        <button class="preset-btn" data-preset="turbines">
+          <span data-i18n="presetTurbines">Turbine Blades (β=3.8, Rapid Ageing)</span>
+        </button>
+      </div>
+
+      <button id="resetDefaultsBtn" class="btn-glass-ghost">
+        <span data-i18n="resetBtn">Reset</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- KPI Cards Grid -->
+  <section class="kpi-grid">
+    <div class="kpi-card accent-cyan">
+      <div class="prismatic-edge"></div>
+      <div class="kpi-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="kpi-content">
+        <span class="kpi-label" data-i18n="kpiR">Mission Reliability R(t)</span>
+        <div class="kpi-val" id="kpiR">0.0%</div>
+        <span class="kpi-sub" id="kpiRSub">At target time t</span>
+      </div>
+    </div>
+
+    <div class="kpi-card accent-emerald">
+      <div class="prismatic-edge"></div>
+      <div class="kpi-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div class="kpi-content">
+        <span class="kpi-label" data-i18n="kpiMTTF">Mean Time to Failure (MTTF)</span>
+        <div class="kpi-val" id="kpiMTTF">0 hrs</div>
+        <span class="kpi-sub">η · Γ(1 + 1/β) Lanczos</span>
+      </div>
+    </div>
+
+    <div class="kpi-card accent-amber">
+      <div class="prismatic-edge"></div>
+      <div class="kpi-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </div>
+      <div class="kpi-content">
+        <span class="kpi-label" data-i18n="kpiHazard">Hazard Rate h(t)</span>
+        <div class="kpi-val" id="kpiHazard">0.00</div>
+        <span class="kpi-sub" data-i18n="kpiHazardSub">Failures / 1,000 hrs</span>
+      </div>
+    </div>
+
+    <div class="kpi-card accent-rose">
+      <div class="prismatic-edge"></div>
+      <div class="kpi-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      </div>
+      <div class="kpi-content">
+        <span class="kpi-label" data-i18n="kpiOptimal">Optimal Replacement Tp*</span>
+        <div class="kpi-val" id="kpiOptimal">0 hrs</div>
+        <span class="kpi-sub" id="kpiOptimalSub">Min-cost maintenance age</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Studio Main Layout -->
+  <main class="studio-layout">
+    <!-- Left Column: Controls Form -->
+    <section class="glass-panel controls-card">
+      <div class="card-header">
+        <div>
+          <h2 class="card-title" data-i18n="paramsTitle">Weibull Distribution Parameters</h2>
+          <p class="card-desc" data-i18n="paramsDesc">Calibrate shape factor, characteristic scale, mission time, and breakdown cost ratios.</p>
+        </div>
+      </div>
+
+      <div class="controls-form">
+        <!-- Beta Slider -->
+        <div class="control-group">
+          <div class="control-header">
+            <label for="sliderBeta"><span class="sym-badge">β</span> <span data-i18n="paramBeta">Shape Parameter (Beta)</span></label>
+            <span class="param-val" id="valBeta">2.50</span>
+          </div>
+          <input type="range" id="sliderBeta" min="0.5" max="5.0" step="0.05" value="2.50">
+          <div class="slider-ticks">
+            <span>0.5 (Infant)</span>
+            <span>1.0 (Random)</span>
+            <span>2.5 (Wear-out)</span>
+            <span>5.0 (Severe)</span>
+          </div>
+        </div>
+
+        <!-- Eta Slider -->
+        <div class="control-group">
+          <div class="control-header">
+            <label for="sliderEta"><span class="sym-badge">η</span> <span data-i18n="paramEta">Characteristic Life (Eta)</span></label>
+            <span class="param-val" id="valEta">5,000 hrs</span>
+          </div>
+          <input type="range" id="sliderEta" min="500" max="20000" step="250" value="5000">
+        </div>
+
+        <!-- Target Time t -->
+        <div class="control-group">
+          <div class="control-header">
+            <label for="sliderTime"><span class="sym-badge">t</span> <span data-i18n="paramTime">Mission Evaluation Time</span></label>
+            <span class="param-val" id="valTime">3,000 hrs</span>
+          </div>
+          <input type="range" id="sliderTime" min="100" max="15000" step="100" value="3000">
+        </div>
+
+        <div class="glass-divider"></div>
+
+        <!-- Costs Cp & Cf -->
+        <div class="cost-row">
+          <div class="control-group">
+            <div class="control-header">
+              <label for="sliderCp"><span data-i18n="paramCp">Preventive (Cp)</span></label>
+              <span class="param-val" id="valCp">$250</span>
+            </div>
+            <input type="range" id="sliderCp" min="50" max="2000" step="25" value="250">
+          </div>
+          <div class="control-group">
+            <div class="control-header">
+              <label for="sliderCf"><span data-i18n="paramCf">Breakdown (Cf)</span></label>
+              <span class="param-val" id="valCf">$2,500</span>
+            </div>
+            <input type="range" id="sliderCf" min="500" max="20000" step="250" value="2500">
+          </div>
+        </div>
+
+        <div class="cost-ratio-badge">
+          <span data-i18n="costRatio">Penalty Ratio (Cf / Cp):</span>
+          <span class="ratio-val" id="valCostRatio">10.0×</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right Column: Visualizer Canvas -->
+    <section class="glass-panel visualizer-card">
+      <div class="card-header">
+        <div>
+          <h2 class="card-title" data-i18n="canvasTitle">Reliability R(t) & Hazard Rate h(t)</h2>
+          <p class="card-desc" data-i18n="canvasDesc">Continuous decay curves rendered with high-DPR optical precision.</p>
+        </div>
+        <div class="view-toggles">
+          <button class="view-btn active" id="btnViewReliability" data-i18n="viewR">R(t) & F(t)</button>
+          <button class="view-btn" id="btnViewHazard" data-i18n="viewH">Hazard h(t)</button>
+        </div>
+      </div>
+
+      <div class="canvas-container">
+        <canvas id="reliabilityCanvas"></canvas>
+      </div>
+
+      <div class="glass-legend">
+        <div class="gl-item"><span class="gl-line line-cyan"></span><span data-i18n="legR">Reliability R(t)</span></div>
+        <div class="gl-item"><span class="gl-line line-rose"></span><span data-i18n="legF">Unreliability F(t)</span></div>
+        <div class="gl-item"><span class="gl-line line-target"></span><span data-i18n="legT">Target Mission t</span></div>
+        <div class="gl-item"><span class="gl-line line-emerald"></span><span data-i18n="legMTTF">MTTF Mean Life</span></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bottom Detailed Tabbed Section -->
+  <section class="glass-panel detailed-section">
+    <div class="tabs-header">
+      <button class="tab-btn active" data-tab="tabCostPolicy">
+        <span>💰</span>
+        <span data-i18n="tabCost">Optimal Age Replacement Policy C(T)</span>
+      </button>
+      <button class="tab-btn" data-tab="tabMedianRank">
+        <span>📋</span>
+        <span data-i18n="tabMedian">Median Rank Empirical Fitting (Benard)</span>
+      </button>
+      <button class="tab-btn" data-tab="tabStrategy">
+        <span>🛡️</span>
+        <span data-i18n="tabStrategy">RCM Asset Maintenance Strategy</span>
+      </button>
+    </div>
+
+    <div class="tabs-content">
+      <div class="tab-pane active" id="tabCostPolicy">
+        <div class="cost-policy-layout">
+          <div class="canvas-container" style="height:260px;">
+            <canvas id="costPolicyCanvas"></canvas>
+          </div>
+          <div class="policy-insights-box" id="policyInsightsBox">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane" id="tabMedianRank">
+        <div class="table-responsive">
+          <table class="glass-table" id="medianRankTable">
+            <!-- Injected via JS -->
+          </table>
+        </div>
+      </div>
+
+      <div class="tab-pane" id="tabStrategy">
+        <div class="rcm-grid" id="rcmGrid">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="footer-left">
+      <span class="aurora-sparkle">✦</span>
+      <span data-i18n="footerStatus">Luxury Aurora Liquid Glass Reliability Engine V2</span>
+    </div>
+    <div class="footer-right">
+      <span>Tareq0001 · Asset Performance & Reliability Engineering</span>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
